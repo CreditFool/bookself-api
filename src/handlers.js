@@ -128,7 +128,9 @@ const getBookByIdHandler = (request, h) => {
 
   const response = h.response({
     status: 'success',
-    data: bookData,
+    data: {
+      book: bookData,
+    },
   });
   response.code(200);
   return response;
