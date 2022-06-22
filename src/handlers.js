@@ -77,11 +77,19 @@ const addBookHandler = (request, h) => {
 };
 
 const getAllBooksHandler = (request, h) => {
+  const bookList = [];
+  books.forEach((book) => {
+    bookList.push({
+      id: book.id,
+      name: book.name,
+      publisher: book.publisher,
+    });
+  });
+
   const response = h.response({
     status: 'success',
-    message: 'Buku berhasil ditambahkan',
     data: {
-      books,
+      books: bookList,
     },
   });
   response.code(200);
