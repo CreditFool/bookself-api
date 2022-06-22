@@ -19,7 +19,7 @@ const addBookHandler = (request, h) => {
   const finished = (pageCount === readPage);
   const insertedAt = new Date().toISOString();
   const updatedAt = insertedAt;
-s
+
   if (name === undefined) {
     const response = h.response({
       status: 'fail',
@@ -61,7 +61,7 @@ s
       status: 'fail',
       message: 'Buku gagal ditambahkan',
     });
-    response.code(400);
+    response.code(500);
     return response;
   }
 
@@ -76,4 +76,19 @@ s
   return response;
 };
 
-export { addBookHandler };
+const getAllBooksHandler = (request, h) => {
+  const response = h.response({
+    status: 'success',
+    message: 'Buku berhasil ditambahkan',
+    data: {
+      books,
+    },
+  });
+  response.code(200);
+  return response;
+};
+
+export {
+  addBookHandler,
+  getAllBooksHandler,
+};
