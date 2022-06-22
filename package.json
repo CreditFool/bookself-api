@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-prod": "NODE_ENV=production node --es-module-specifier-resolution=node src/server.js",
+    "start-dev": "nodemon --es-module-specifier-resolution=node src/server.js",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",

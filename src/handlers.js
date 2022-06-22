@@ -16,10 +16,11 @@ const addBookHandler = (request, h) => {
   reading = Boolean(reading);
 
   const id = nanoid(15);
+  const finished = (pageCount === readPage);
   const insertedAt = new Date().toISOString();
   const updatedAt = insertedAt;
-
-  if (name === null) {
+s
+  if (name === undefined) {
     const response = h.response({
       status: 'fail',
       message: 'Gagal menambahkan buku. Mohon isi nama buku',
@@ -38,7 +39,18 @@ const addBookHandler = (request, h) => {
   }
 
   const newBook = {
-    id, name, year, author, summary, publisher, pageCount, readPage, reading, insertedAt, updatedAt,
+    id,
+    name,
+    year,
+    author,
+    summary,
+    publisher,
+    pageCount,
+    readPage,
+    finished,
+    reading,
+    insertedAt,
+    updatedAt,
   };
   books.push(newBook);
 
