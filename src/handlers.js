@@ -77,8 +77,19 @@ const addBookHandler = (request, h) => {
 };
 
 const getAllBooksHandler = (request, h) => {
+  const { reading, finished } = request.query;
+
+  let filteredBooks = books;
+  if (reading !== undefined) {
+    filteredBooks = filteredBooks.filter((book) => book.reading === Boolean(Number(reading)));
+  }
+
+  if (finished !== undefined) {
+    filteredBooks = filteredBooks.filter((book) => book.finished === Boolean(Number(finished)));
+  }
+
   const bookList = [];
-  books.forEach((book) => {
+  filteredBooks.forEach((book) => {
     bookList.push({
       id: book.id,
       name: book.name,
